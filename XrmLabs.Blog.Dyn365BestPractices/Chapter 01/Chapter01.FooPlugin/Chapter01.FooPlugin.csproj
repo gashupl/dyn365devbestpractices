@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>6a5005ae-0f61-4734-8315-aff163793963</ProjectGuid>
+    <ProjectGuid>e4c36106-552a-45f2-b595-c18acd03f66c</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XrmLabs.Blog.Dyn365BestPractices.Chapter01</RootNamespace>
-    <AssemblyName>XrmLabs.Blog.Dyn365BestPractices.Chapter01</AssemblyName>
+    <RootNamespace>Chapter01.FooPlugin</RootNamespace>
+    <AssemblyName>Chapter01.FooPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XrmLabs.Blog.Dyn365BestPractices.Chapter01
+namespace Chapter01.FooPlugin
 {
     public class Class1
     {

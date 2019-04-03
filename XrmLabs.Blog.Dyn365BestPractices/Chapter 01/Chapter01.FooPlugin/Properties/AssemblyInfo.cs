@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XrmLabs.Blog.Dyn365BestPractices.Chapter01")]
+[assembly: AssemblyTitle("Chapter01.FooPlugin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("XrmLabs.Blog.Dyn365BestPractices.Chapter01")]
+[assembly: AssemblyProduct("Chapter01.FooPlugin")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6a5005ae-0f61-4734-8315-aff163793963")]
+[assembly: Guid("e4c36106-552a-45f2-b595-c18acd03f66c")]
 
 // Version information for an assembly consists of the following four values:
 //

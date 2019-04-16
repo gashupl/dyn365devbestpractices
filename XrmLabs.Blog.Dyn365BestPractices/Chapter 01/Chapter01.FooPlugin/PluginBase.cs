@@ -21,9 +21,10 @@ namespace Chapter01.FooPlugin
     /// </summary>
     public abstract class PluginBase : IPlugin
     {
-
+        #region Constants
+        private const string targetAttributeName = "Target"; 
+        #endregion
         #region Protected properties
-
         protected string Name => GetType().FullName;
 
         /// <summary>
@@ -118,6 +119,44 @@ namespace Chapter01.FooPlugin
 
         public abstract void Execute(IPluginExecutionContext pluginExecutionContext, ITracingService tracingService);
         #endregion
+
+        protected T GetTargetEntity<T>(IPluginExecutionContext pluginExecutionContext) where T: Entity
+        {
+            if (pluginExecutionContext.InputParameters.Contains(targetAttributeName) && pluginExecutionContext.InputParameters[targetAttributeName] is Entity)
+            {
+                return ((Entity)pluginExecutionContext.InputParameters[targetAttributeName])?.ToEntity<T>();
+            }
+            else
+            {
+                throw new InvalidPluginExecutionException(OperationStatus.Failed, "Missing target value or target is not an Entity"); 
+            }
+
+        }
+
+        protected T GetPreImage<T>(IPluginExecutionContext pluginExecutionContext, string preImageName) where T : Entity
+        {
+            if (pluginExecutionContext.PreEntityImages.Contains(preImageName))
+            {
+                return pluginExecutionContext.PreEntityImages[preImageName].ToEntity<T>();
+            }
+            else
+            {
+                throw new InvalidPluginExecutionException(OperationStatus.Failed, $"Missing pre entity named {preImageName}");
+            }
+            
+        }
+
+        protected T GetPostImage<T>(IPluginExecutionContext pluginExecutionContext, string postImageName) where T : Entity
+        {
+            if (pluginExecutionContext.PostEntityImages.Contains(postImageName))
+            {
+                return pluginExecutionContext.PreEntityImages[postImageName].ToEntity<T>();
+            }
+            else
+            {
+                throw new InvalidPluginExecutionException(OperationStatus.Failed, $"Missing pre entity named {postImageName}");
+            }
+        }
 
         protected string GetUnsecurePluginConfigurationValue(string key)
         {

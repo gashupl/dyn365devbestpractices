@@ -22,7 +22,7 @@ namespace Chapter01.FooPlugin
     public abstract class PluginBase : IPlugin
     {
         #region Constants
-        private const string targetAttributeName = "Target"; 
+        public const string TargetAttributeName = "Target"; 
         #endregion
         #region Protected properties
         protected string Name => GetType().FullName;
@@ -65,15 +65,6 @@ namespace Chapter01.FooPlugin
                 throw new ApplicationException("Failed to initialize plugin execution context");
             }
 
-            IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            IOrganizationService organizationService = serviceFactory.CreateOrganizationService(pluginExecutionContext.UserId);
-
-            // Resolve the Azure service bus notification service 
-            var notificationService = (IServiceEndpointNotificationService)serviceProvider.GetService(typeof(IServiceEndpointNotificationService));
-            if (notificationService == null)
-            {
-                throw new ApplicationException("Failed to initialize Azure service bus notification service");
-            }
 
             try
             {
@@ -122,9 +113,9 @@ namespace Chapter01.FooPlugin
 
         protected T GetTargetEntity<T>(IPluginExecutionContext pluginExecutionContext) where T: Entity
         {
-            if (pluginExecutionContext.InputParameters.Contains(targetAttributeName) && pluginExecutionContext.InputParameters[targetAttributeName] is Entity)
+            if (pluginExecutionContext.InputParameters.Contains(TargetAttributeName) && pluginExecutionContext.InputParameters[TargetAttributeName] is Entity)
             {
-                return ((Entity)pluginExecutionContext.InputParameters[targetAttributeName])?.ToEntity<T>();
+                return ((Entity)pluginExecutionContext.InputParameters[TargetAttributeName])?.ToEntity<T>();
             }
             else
             {
@@ -160,14 +151,32 @@ namespace Chapter01.FooPlugin
 
         protected string GetUnsecurePluginConfigurationValue(string key)
         {
-            //TODO: Implement your logic here
-            throw new NotImplementedException(); 
+            return this.GetPluginConfgiurationValue(this.UnsecurePluginConfiguration, key);
         }
 
         protected string GetSecurePluginConfigurationValue(string key)
         {
-            //TODO: Implement your logic here
-            throw new NotImplementedException();
+            return this.GetPluginConfgiurationValue(this.SecurePluginConfiguration, key); 
+        }
+
+        private string GetPluginConfgiurationValue(string config, string key)
+        {
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(this.UnsecurePluginConfiguration))
+            {
+                return null;
+            }
+
+            try
+            {
+                var xmlDocument = new XmlDocument();
+                xmlDocument.LoadXml(config);
+                var xmlNode = xmlDocument.SelectSingleNode($"configuration/appSettings/add[@key='{key}']");
+                return xmlNode?.Attributes?["value"]?.InnerText;
+            }
+            catch (Exception e)
+            {
+                throw new FormatException("Unable to parse XML configuration", e);
+            }
         }
 
     }

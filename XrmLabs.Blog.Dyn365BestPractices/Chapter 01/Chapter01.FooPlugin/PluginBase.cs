@@ -79,7 +79,7 @@ namespace Chapter01.FooPlugin
                     tracingService.Trace($"Invalid plugin execution context detected (Plugin: {this.Name})");
                     tracingService.Trace($"Execution context: [{pluginExecutionContext.ToFormattedString()}]");
                     tracingService.Trace("Plugin execution aborted");
-                    return;
+                    throw new InvalidPluginExecutionException("Invalid plugin execution context detected"); 
                 }
             }
             catch (InvalidPluginExecutionException)

@@ -75,7 +75,6 @@ namespace Chapter01.FooPlugin
                 }
                 else
                 {
-                    // Perform silent abort
                     tracingService.Trace($"Invalid plugin execution context detected (Plugin: {this.Name})");
                     tracingService.Trace($"Execution context: [{pluginExecutionContext.ToFormattedString()}]");
                     tracingService.Trace("Plugin execution aborted");

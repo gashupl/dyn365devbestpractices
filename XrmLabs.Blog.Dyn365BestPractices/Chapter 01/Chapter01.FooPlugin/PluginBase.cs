@@ -24,9 +24,8 @@ namespace Chapter01.FooPlugin
         #region Constants
         public const string TargetAttributeName = "Target"; 
         #endregion
-        #region Protected properties
-        protected string Name => GetType().FullName;
 
+        #region Protected properties
         /// <summary>
         /// Gets the unsecure plugin configuration
         /// </summary>
@@ -36,16 +35,18 @@ namespace Chapter01.FooPlugin
         /// Gets the secure plugin configuration
         /// </summary>
         protected string SecurePluginConfiguration { get; }
-
         #endregion
 
+        #region Constructor
         protected PluginBase(string unsecureString, string secureString) 
         {
             // Set local state
             this.UnsecurePluginConfiguration = unsecureString;
             this.SecurePluginConfiguration = secureString;
         }
+        #endregion
 
+        #region IPlugin interface implementation
         public void Execute(IServiceProvider serviceProvider)
         {
             if (serviceProvider == null)
@@ -104,12 +105,16 @@ namespace Chapter01.FooPlugin
                 throw new InvalidPluginExecutionException(OperationStatus.Failed, "Sorry, the action failed unexpectedly!");
             }
         }
+        #endregion
 
         #region Abstract methods
         public abstract bool IsContextValid(IPluginExecutionContext context);
 
         public abstract void Execute(IPluginExecutionContext pluginExecutionContext, ITracingService tracingService);
         #endregion
+
+        #region Protected methods
+        protected string Name => GetType().FullName;
 
         protected T GetTargetEntity<T>(IPluginExecutionContext pluginExecutionContext) where T: Entity
         {
@@ -158,7 +163,9 @@ namespace Chapter01.FooPlugin
         {
             return this.GetPluginConfgiurationValue(this.SecurePluginConfiguration, key); 
         }
+        #endregion
 
+        #region Private methods
         private string GetPluginConfgiurationValue(string config, string key)
         {
             if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(this.UnsecurePluginConfiguration))
@@ -178,6 +185,8 @@ namespace Chapter01.FooPlugin
                 throw new FormatException("Unable to parse XML configuration", e);
             }
         }
+        #endregion
+
 
     }
 }

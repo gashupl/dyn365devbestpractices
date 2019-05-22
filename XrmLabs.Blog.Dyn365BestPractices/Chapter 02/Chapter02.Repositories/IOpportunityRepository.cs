@@ -15,6 +15,8 @@ namespace Chapter02.Repositories
 
         Guid Create(Opportunity opportunity);
 
+        void Dispose(); 
+
 
     }
 }

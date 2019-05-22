@@ -46,5 +46,10 @@ namespace Chapter02.Repositories
             return this.orgService.Create(opportunity); 
         }
 
+        public void Dispose()
+        {
+            this.serviceContext.Dispose(); 
+        }
+
     }
 }

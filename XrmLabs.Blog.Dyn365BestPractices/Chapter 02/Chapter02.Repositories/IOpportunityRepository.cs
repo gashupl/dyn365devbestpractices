@@ -1,22 +1,11 @@
 ﻿using Common.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace Chapter02.Repositories
 {
-    public interface IOpportunityRepository
+    public interface IOpportunityRepository : IRepository<Opportunity>
     {
-        //Opportunity GetById(Guid id);
-
-        //void Create(Opportunity opportunity); 
-
-        //void SaveChanges();
-
-        Opportunity GetById(Guid id);
-
-        Guid Create(Opportunity opportunity);
-
-        void Dispose(); 
-
-
+        List<Opportunity> GetByAccountId(Guid id);
     }
 }

@@ -10,10 +10,13 @@ namespace Chapter02.Repositories
 {
     public class OpportunityRepository : IOpportunityRepository
     {
+        protected Dyn365ServiceContext serviceContext;
+        protected IOrganizationService orgService;
 
         public OpportunityRepository(IOrganizationService service)
         {
-
+            this.orgService = service;
+            this.serviceContext = new Dyn365ServiceContext(service); 
         }
 
 

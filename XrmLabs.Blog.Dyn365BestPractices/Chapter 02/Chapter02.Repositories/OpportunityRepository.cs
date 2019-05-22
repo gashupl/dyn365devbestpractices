@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Entities;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
 
 namespace Chapter02.Repositories
 {
@@ -20,19 +21,30 @@ namespace Chapter02.Repositories
         }
 
 
+        //public Opportunity GetById(Guid id)
+        //{
+        //    return this.serviceContext.OpportunitySet.FirstOrDefault(o => o.Id == id); 
+        //}
+
+        //public void Create(Opportunity opportunity)
+        //{
+        //    this.serviceContext.AddObject(opportunity); 
+        //}
+
+        //public void SaveChanges()
+        //{
+        //    this.serviceContext.SaveChanges(); 
+        //}
+
         public Opportunity GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return this.orgService.Retrieve(Opportunity.EntityLogicalName, id, new ColumnSet(true))?.ToEntity<Opportunity>(); 
         }
 
         public Guid Create(Opportunity opportunity)
         {
-            throw new NotImplementedException();
+            return this.orgService.Create(opportunity); 
         }
 
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -9,7 +9,7 @@ namespace Chapter02.Repositories
 {
     public interface IRepository<T> where T: Entity
     {
-        T GetById(Guid id, string entityName);
+        T GetById(Guid id);
 
         void Create(T entity);
 

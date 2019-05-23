@@ -1,42 +1,39 @@
 ﻿using Common.Entities;
 using Microsoft.Xrm.Sdk;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chapter02.Repositories
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : Entity
     {
-        protected Dyn365ServiceContext serviceContext;
-        protected IOrganizationService orgService;
+        protected Dyn365ServiceContext ServiceContext;
+        protected IOrganizationService OrgService;
 
         public RepositoryBase(IOrganizationService service)
         {
-            this.orgService = service; 
-            this.serviceContext = new Dyn365ServiceContext(service);
+            this.OrgService = service; 
+            this.ServiceContext = new Dyn365ServiceContext(service);
         }
 
         public void Create(T entity)
         {
-            this.serviceContext.AddObject(entity);
+            this.ServiceContext.AddObject(entity);
         }
 
-        public void Dispose()
+        public T GetById(Guid id)
         {
-            throw new NotImplementedException();
-        }
-
-        public T GetById(Guid id, string entityName)
-        {
-            return this.orgService.Retrieve(entityName, id, new Microsoft.Xrm.Sdk.Query.ColumnSet(true)).ToEntity<T>(); 
+            var entityName = typeof(T).Name; 
+            return this.OrgService.Retrieve(entityName, id, new Microsoft.Xrm.Sdk.Query.ColumnSet(true)).ToEntity<T>(); 
         }
 
         public void SaveChanges()
         {
-            this.serviceContext.SaveChanges();
+            this.ServiceContext.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            ServiceContext.Dispose();
         }
     }
 }

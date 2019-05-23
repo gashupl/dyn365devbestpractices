@@ -17,7 +17,10 @@ namespace Chapter02.Repositories
 
         public List<Opportunity> GetByAccountId(Guid id)
         {
-            throw new NotImplementedException();
+            var query = this.ServiceContext.OpportunitySet
+                .Where(o => o.CustomerId != null && o.CustomerId.Id == id);
+            return query.ToList<Opportunity>();
         }
+
     }
 }

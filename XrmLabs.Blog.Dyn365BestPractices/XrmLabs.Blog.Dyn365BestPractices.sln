@@ -12,7 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitignore = ..\.gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter 02", "Chapter 02", "{652D82C2-1E04-4B1A-907B-399339420BAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter02.Repositories", "Chapter 02\Chapter02.Repositories\Chapter02.Repositories.csproj", "{218E8399-434D-49DF-AA96-6F6F6166B8A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F623142B-8571-40F9-87FA-06892028C7D6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Entities", "Common\Entities\Entities.shproj", "{B072281D-9AB9-417A-A37F-4E4E22057085}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Common\Entities\Entities.projitems*{218e8399-434d-49df-aa96-6f6f6166b8a7}*SharedItemsImports = 4
+		Common\Entities\Entities.projitems*{b072281d-9ab9-417a-a37f-4e4e22057085}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -22,12 +34,18 @@ Global
 		{E4C36106-552A-45F2-B595-C18ACD03F66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4C36106-552A-45F2-B595-C18ACD03F66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4C36106-552A-45F2-B595-C18ACD03F66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218E8399-434D-49DF-AA96-6F6F6166B8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{218E8399-434D-49DF-AA96-6F6F6166B8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{218E8399-434D-49DF-AA96-6F6F6166B8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{218E8399-434D-49DF-AA96-6F6F6166B8A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E4C36106-552A-45F2-B595-C18ACD03F66C} = {34628A06-4781-4370-9288-10E0D8F75047}
+		{218E8399-434D-49DF-AA96-6F6F6166B8A7} = {652D82C2-1E04-4B1A-907B-399339420BAB}
+		{B072281D-9AB9-417A-A37F-4E4E22057085} = {F623142B-8571-40F9-87FA-06892028C7D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F721D344-B887-4FF4-B915-6F11862B44D1}

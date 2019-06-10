@@ -57,10 +57,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Chapter 01\Chapter01.FooPlugin\PluginBase.cs">
+      <Link>PluginBase.cs</Link>
+    </Compile>
+    <Compile Include="Extensions\IPluginExecutionContextExtensions.cs" />
+    <Compile Include="FooLogicService.cs" />
+    <Compile Include="FooPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chapter 02\Chapter02.Repositories\Chapter02.Repositories.csproj">
+      <Project>{218e8399-434d-49df-aa96-6f6f6166b8a7}</Project>
+      <Name>Chapter02.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

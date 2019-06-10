@@ -22,5 +22,9 @@ namespace Chapter02.Repositories
             return query.ToList<Opportunity>();
         }
 
+        public List<Opportunity> GetSomeData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

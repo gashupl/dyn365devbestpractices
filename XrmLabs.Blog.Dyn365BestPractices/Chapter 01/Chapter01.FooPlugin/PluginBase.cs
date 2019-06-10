@@ -66,12 +66,17 @@ namespace Chapter01.FooPlugin
                 throw new ApplicationException("Failed to initialize plugin execution context");
             }
 
+            IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+            if (serviceFactory == null)
+            {
+                throw new ApplicationException("Failed to initialize plugin serviceFactory");
+            }
 
             try
             {
                 if (this.IsContextValid(pluginExecutionContext))
                 {
-                    this.Execute(pluginExecutionContext, tracingService);
+                    this.Execute(pluginExecutionContext, serviceFactory, tracingService);
                 }
                 else
                 {
@@ -109,7 +114,7 @@ namespace Chapter01.FooPlugin
         #region Abstract methods
         public abstract bool IsContextValid(IPluginExecutionContext context);
 
-        public abstract void Execute(IPluginExecutionContext pluginExecutionContext, ITracingService tracingService);
+        public abstract void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService);
         #endregion
 
         #region Protected methods

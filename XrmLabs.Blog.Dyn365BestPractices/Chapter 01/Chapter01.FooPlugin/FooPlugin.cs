@@ -18,7 +18,7 @@ namespace Chapter01.FooPlugin
             throw new NotImplementedException();
         }
 
-        public override void Execute(IPluginExecutionContext pluginExecutionContext, ITracingService tracingService)
+        public override void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService)
         {
             throw new NotImplementedException();
         }

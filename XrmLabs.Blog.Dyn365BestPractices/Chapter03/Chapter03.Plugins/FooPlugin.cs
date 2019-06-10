@@ -22,12 +22,12 @@ namespace Chapter03.Plugins
             throw new NotImplementedException();
         }
 
-        public override void Execute(IPluginExecutionContext pluginExecutionContext, ITracingService tracingService)
+        public override void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService)
         {
-            //var opportunityRepo = new OpportunityRepository(this.)
-            //{
+            var orgService = serviceFactory.CreateOrganizationService(pluginExecutionContext.UserId);
 
-            //var fooService = new FooLogicService()
+            var opportunityRepo = new OpportunityRepository(orgService);
+            var data = opportunityRepo.GetSomeData(); 
 
         }
     }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Chapter01.FooPlugin;
 using Chapter02.Repositories;
+using Chapter03.Plugins.Sample2;
+using Common.Entities;
 using Microsoft.Xrm.Sdk;
 
 namespace Chapter03.Plugins
@@ -25,10 +27,10 @@ namespace Chapter03.Plugins
         public override void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService)
         {
             var orgService = serviceFactory.CreateOrganizationService(pluginExecutionContext.UserId);
+            var factory = new RepositoryFactory(orgService);
 
-            var opportunityRepo = new OpportunityRepository(orgService);
-            var data = opportunityRepo.GetSomeData(); 
-
+            //var opportunityRepo = factory.Get<OpportunityRepository, Opportunity>(); 
+            //var data = opportunityRepo.GetSomeData(); 
         }
     }
 }

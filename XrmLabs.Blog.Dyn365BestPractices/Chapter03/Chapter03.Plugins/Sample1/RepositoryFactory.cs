@@ -17,7 +17,7 @@ namespace Chapter03.Plugins.Sample1
         }
         public OpportunityRepository Get()
         {
-            return new OpportunityRepository(this.service);
+            return new OpportunityRepository();
         }
     }
 }

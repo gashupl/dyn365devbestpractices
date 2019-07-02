@@ -9,9 +9,14 @@ namespace Chapter02.Repositories
         protected Dyn365ServiceContext ServiceContext;
         protected IOrganizationService OrgService;
 
-        public RepositoryBase(IOrganizationService service)
+        public RepositoryBase()
         {
-            this.OrgService = service; 
+
+        }
+
+        public void Initialize(IOrganizationService service)
+        {
+            this.OrgService = service;
             this.ServiceContext = new Dyn365ServiceContext(service);
         }
 

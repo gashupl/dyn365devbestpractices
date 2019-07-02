@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Chapter03.Plugins.Sample2
 {
-    class RepositoryFactory
+    public class RepositoryFactory
     {
         private IOrganizationService service;
         public RepositoryFactory(IOrganizationService service)
         {
             this.service = service;
         }
-        public T Get<E, T>() where E : Entity  where T: IRepository<E>, new() 
+        public T Get<E, T>() where E : Entity where T : RepositoryBase<E>, new()
         {
-            throw new NotImplementedException(); 
-           // return new T(this.service); 
+            var repository = new T();
+            repository.Initialize(this.service);
+            return repository;
         }
     }
 }

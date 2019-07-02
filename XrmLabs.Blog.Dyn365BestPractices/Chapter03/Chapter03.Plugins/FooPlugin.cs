@@ -29,8 +29,8 @@ namespace Chapter03.Plugins
             var orgService = serviceFactory.CreateOrganizationService(pluginExecutionContext.UserId);
             var factory = new RepositoryFactory(orgService);
 
-            //var opportunityRepo = factory.Get<OpportunityRepository, Opportunity>(); 
-            //var data = opportunityRepo.GetSomeData(); 
+            var opportunityRepo = factory.Get<Opportunity, OpportunityRepository>();
+            var data = opportunityRepo.GetSomeData();
         }
     }
 }

@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chapter01.FooPlugin;
+using Chapter02.Repositories;
+using Chapter03.Plugins.Sample3;
+using Common.Entities;
 using Microsoft.Xrm.Sdk;
 
-namespace Chapter01.FooPlugin
+namespace Chapter03.Plugins
 {
     public class FooPlugin : PluginBase
     {
+        #region Constructor
         public FooPlugin(string unsecureString, string secureString) : base(unsecureString, secureString)
         {
-        }
+        } 
+        #endregion
 
         public override bool IsContextValid(IPluginExecutionContext context)
         {
@@ -20,7 +26,11 @@ namespace Chapter01.FooPlugin
 
         public override void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService)
         {
-            throw new NotImplementedException();
+            var orgService = serviceFactory.CreateOrganizationService(pluginExecutionContext.UserId);
+            var factory = new RepositoryFactory(orgService);
+
+            var opportunityRepo = factory.Get<Opportunity, OpportunityRepository>();
+            var data = opportunityRepo.GetSomeData();
         }
     }
 }

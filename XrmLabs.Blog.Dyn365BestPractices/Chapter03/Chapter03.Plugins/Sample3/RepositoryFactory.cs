@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chapter03.Plugins.Sample2
+namespace Chapter03.Plugins.Sample3
 {
     public class RepositoryFactory
     {
@@ -15,10 +15,9 @@ namespace Chapter03.Plugins.Sample2
         {
             this.service = service;
         }
-        public T Get<E, T>() where E : Entity where T : RepositoryBase<E>, new()
+        public T Get<E, T>() where E : Entity where T : RepositoryBase<E>
         {
-            var repository = new T();
-            //repository.Initialize(this.service); //In case of uncommenting the code please also uncomment default constructor and Initialize method of RepositoryBase class
+            var repository = (T)Activator.CreateInstance(typeof(T), this.service); 
             return repository;
         }
 

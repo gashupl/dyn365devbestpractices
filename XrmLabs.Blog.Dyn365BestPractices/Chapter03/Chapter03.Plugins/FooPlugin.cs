@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Chapter01.FooPlugin;
 using Chapter02.Repositories;
-using Chapter03.Plugins.Sample2;
+using Chapter03.Plugins.Sample3;
 using Common.Entities;
 using Microsoft.Xrm.Sdk;
 

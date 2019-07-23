@@ -37,6 +37,9 @@
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.12\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleInjector, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.4.6.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -58,12 +61,16 @@
     <Compile Include="FooPlugin.cs" />
     <Compile Include="PluginBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IOpportunityRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\OpportunityRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\RepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="..\..\Common\Entities\Entities.projitems" Label="Shared" />

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Xml;
+using Chapter04.Plugins.Dependencies;
+using Chapter04.Plugins.Repositories;
 using Microsoft.Xrm.Sdk;
+using SimpleInjector;
 
 namespace Chapter04.FooPlugin
 {
@@ -34,6 +32,8 @@ namespace Chapter04.FooPlugin
         /// Gets the secure plugin configuration
         /// </summary>
         protected string SecurePluginConfiguration { get; }
+
+        public abstract IDependencyLoader DependencyLoader { get; protected set; }
         #endregion
 
         #region Constructor
@@ -70,6 +70,13 @@ namespace Chapter04.FooPlugin
             {
                 throw new ApplicationException("Failed to initialize plugin serviceFactory");
             }
+
+            var container = new SimpleInjector.Container();
+            container.Register<ITracingService>(() => tracingService);
+            container.Register<IPluginExecutionContext>(() => pluginExecutionContext);
+            container.Register<IOrganizationServiceFactory>(() => serviceFactory);
+          //  container.Register<IRepositoryFactory>(() => new RepositoryFactory())
+            this.DependencyLoader.RegisterDependencies(container);
 
             try
             {

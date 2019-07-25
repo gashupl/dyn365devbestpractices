@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chapter04.Plugins.Dependencies;
 
 namespace Chapter04.Plugins
 {
     public class FooPlugin : PluginBase
     {
+
+        public override IDependencyLoader DependencyLoader { get; protected set; } = new DependencyLoader(); 
         public FooPlugin(string unsecureString, string secureString) : base(unsecureString, secureString)
         {
         }
@@ -18,6 +21,8 @@ namespace Chapter04.Plugins
         {
             throw new NotImplementedException();
         }
+
+
 
         public override bool IsContextValid(IPluginExecutionContext context)
         {

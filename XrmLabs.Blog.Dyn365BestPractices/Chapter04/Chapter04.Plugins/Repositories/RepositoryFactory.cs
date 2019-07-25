@@ -1,14 +1,10 @@
-﻿using Chapter04.Repositories;
-using Microsoft.Xrm.Sdk;
+﻿using Microsoft.Xrm.Sdk;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Chapter04.Plugins.Repositories;
 
-namespace Chapter04.Plugins.Sample3
+namespace Chapter04.Plugins.Repositories
 {
-    public class RepositoryFactory
+    public class RepositoryFactory : IRepositoryFactory
     {
         private IOrganizationService service;
         public RepositoryFactory(IOrganizationService service)

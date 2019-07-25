@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Chapter04.Repositories
+namespace Chapter04.Plugins.Repositories
 {
     public interface IOpportunityRepository : IRepository<Opportunity>
     {

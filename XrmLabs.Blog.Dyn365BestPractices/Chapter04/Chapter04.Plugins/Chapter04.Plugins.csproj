@@ -58,21 +58,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies\DependencyLoader.cs" />
+    <Compile Include="Dependencies\IDependencyLoader.cs" />
     <Compile Include="FooPlugin.cs" />
     <Compile Include="PluginBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\IOpportunityRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\OpportunityRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RepositoryFactory.cs" />
+    <Compile Include="Services\IOpportunityTestService.cs" />
+    <Compile Include="Services\OpportunityTestService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="..\..\Common\Entities\Entities.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

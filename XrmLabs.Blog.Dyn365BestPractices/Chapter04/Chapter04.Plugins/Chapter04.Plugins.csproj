@@ -70,8 +70,10 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RepositoryFactory.cs" />
     <Compile Include="Services\IOpportunityTestService.cs" />
+    <Compile Include="Services\IServicesFactory.cs" />
     <Compile Include="Services\OpportunityTestService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\ServicesFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

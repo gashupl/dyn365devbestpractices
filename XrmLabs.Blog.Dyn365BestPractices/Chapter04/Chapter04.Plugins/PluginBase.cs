@@ -3,6 +3,7 @@ using System.Threading;
 using System.Xml;
 using Chapter04.Plugins.Dependencies;
 using Chapter04.Plugins.Repositories;
+using Chapter04.Plugins.Services;
 using Microsoft.Xrm.Sdk;
 using SimpleInjector;
 
@@ -71,18 +72,20 @@ namespace Chapter04.FooPlugin
                 throw new ApplicationException("Failed to initialize plugin serviceFactory");
             }
 
-            var container = new SimpleInjector.Container();
-            container.Register<ITracingService>(() => tracingService);
-            container.Register<IPluginExecutionContext>(() => pluginExecutionContext);
-            container.Register<IOrganizationServiceFactory>(() => serviceFactory);
-          //  container.Register<IRepositoryFactory>(() => new RepositoryFactory())
-            this.DependencyLoader.RegisterDependencies(container);
-
             try
             {
+                var container = new Container();
+                container.Register<ITracingService>(() => tracingService);
+                container.Register<IPluginExecutionContext>(() => pluginExecutionContext);
+                container.Register<IOrganizationServiceFactory>(() => serviceFactory);
+                container.Register<IRepositoryFactory>(() => new RepositoryFactory(container));
+                container.Register<IServicesFactory>(() => new ServicesFactory(container));
+
+                this.DependencyLoader.RegisterDependencies(container);
+
                 if (this.IsContextValid(pluginExecutionContext))
                 {
-                    this.Execute(pluginExecutionContext, serviceFactory, tracingService);
+                    this.Execute(pluginExecutionContext, container);
                 }
                 else
                 {
@@ -119,7 +122,7 @@ namespace Chapter04.FooPlugin
         #region Abstract methods
         public abstract bool IsContextValid(IPluginExecutionContext context);
 
-        public abstract void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService);
+        public abstract void Execute(IPluginExecutionContext pluginExecutionContext, Container container);
         #endregion
 
         #region Protected methods

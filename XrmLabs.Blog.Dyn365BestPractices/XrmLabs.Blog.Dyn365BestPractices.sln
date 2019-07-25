@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter04", "Chapter04", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter04.Plugins", "Chapter04\Chapter04.Plugins\Chapter04.Plugins.csproj", "{60ABB3A1-DA6C-4AC0-8556-5000CA611CFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter04.Plugin.Tests", "Chapter04\Chapter04.Plugin.Tests\Chapter04.Plugin.Tests.csproj", "{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Common\Entities\Entities.projitems*{218e8399-434d-49df-aa96-6f6f6166b8a7}*SharedItemsImports = 4
@@ -63,6 +65,10 @@ Global
 		{60ABB3A1-DA6C-4AC0-8556-5000CA611CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60ABB3A1-DA6C-4AC0-8556-5000CA611CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60ABB3A1-DA6C-4AC0-8556-5000CA611CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{E1678CBC-A509-47ED-9042-F7E93FD1C1E3} = {8CAADADC-2CA6-48B9-8C11-52ECDD22ED66}
 		{67D04886-5A25-4BBB-BE67-B08A22C20FFC} = {D11939F6-111A-4487-802F-9199306FFE6E}
 		{60ABB3A1-DA6C-4AC0-8556-5000CA611CFB} = {593652B3-0140-44BA-AE56-08C36C218BDB}
+		{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2} = {593652B3-0140-44BA-AE56-08C36C218BDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F721D344-B887-4FF4-B915-6F11862B44D1}

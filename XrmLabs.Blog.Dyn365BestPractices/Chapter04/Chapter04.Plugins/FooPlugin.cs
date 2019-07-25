@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chapter04.Plugins.Dependencies;
+using Common.Entities;
+using SimpleInjector;
+using Chapter04.Plugins.Services;
 
 namespace Chapter04.Plugins
 {
@@ -17,16 +20,26 @@ namespace Chapter04.Plugins
         {
         }
 
-        public override void Execute(IPluginExecutionContext pluginExecutionContext, IOrganizationServiceFactory serviceFactory, ITracingService tracingService)
+        public override void Execute(IPluginExecutionContext pluginExecutionContext, Container container)
         {
-            throw new NotImplementedException();
+            var target = this.GetTargetEntity<Opportunity>(pluginExecutionContext); 
+
+            var testService = container.GetInstance<IOpportunityTestService>();
+            testService.DoSomething(target); 
         }
 
 
 
         public override bool IsContextValid(IPluginExecutionContext context)
         {
-            throw new NotImplementedException();
+            if(context.PrimaryEntityName == Opportunity.EntityLogicalName)
+            {
+                return true; 
+            }
+            else
+            {
+                return false; 
+            }
         }
     }
 }

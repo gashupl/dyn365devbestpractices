@@ -1,4 +1,5 @@
 ﻿using Chapter04.Plugins.Repositories;
+using Chapter04.Plugins.Services;
 using SimpleInjector;
 
 namespace Chapter04.Plugins.Dependencies
@@ -8,10 +9,8 @@ namespace Chapter04.Plugins.Dependencies
         public void RegisterDependencies(Container container)
         {
             container.Register<IOpportunityRepository, OpportunityRepository>();
-            //container.Register<ILogger, FileLogger>(Lifestyle.Singleton);
+            container.Register<OpportunityTestService, OpportunityTestService>(); 
 
-
-            // 3. Verify your configuration
             container.Verify();
         }
     }

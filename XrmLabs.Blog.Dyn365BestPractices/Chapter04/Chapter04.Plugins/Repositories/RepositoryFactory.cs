@@ -1,22 +1,23 @@
 ﻿using Microsoft.Xrm.Sdk;
 using System;
 using Chapter04.Plugins.Repositories;
+using SimpleInjector;
 
 namespace Chapter04.Plugins.Repositories
 {
     public class RepositoryFactory : IRepositoryFactory
     {
+        private Container container; 
+
         private IOrganizationService service;
-        public RepositoryFactory(IOrganizationService service)
+        public RepositoryFactory(Container container)
         {
-            this.service = service;
+            this.container = container;
         }
         public T Get<E, T>() where E : Entity where T : RepositoryBase<E>
         {
-            var repository = (T)Activator.CreateInstance(typeof(T), this.service); 
-            return repository;
+            return this.container.GetInstance<T>();
         }
 
-     
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Chapter04.Plugins;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Chapter04.Plugin.Tests
@@ -7,8 +8,11 @@ namespace Chapter04.Plugin.Tests
     public class FooPluginTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ExecuteTest()
         {
+            //var fooPlugin = new Plugins.FooPlugin(String.Empty, String.Empty);
+            //fooPlugin.DependencyLoader = new Plugins.Dependencies.DependencyLoader(); 
+            
         }
     }
 }

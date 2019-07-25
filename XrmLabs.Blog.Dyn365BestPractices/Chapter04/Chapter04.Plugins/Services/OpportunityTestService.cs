@@ -11,7 +11,7 @@ namespace Chapter04.Plugins.Services
             this.opportunityRepository = repositoryFactory.Get<Opportunity, OpportunityRepository>(); 
         }
 
-        void IOpportunityTestService.DoSomething(Opportunity opportunity)
+        public void DoSomething(Opportunity opportunity)
         {
             this.opportunityRepository.Create(new Opportunity() { Name = "Test opportunity" }); 
         }

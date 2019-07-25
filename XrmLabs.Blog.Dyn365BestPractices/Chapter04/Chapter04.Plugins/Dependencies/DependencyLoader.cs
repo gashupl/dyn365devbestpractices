@@ -4,7 +4,7 @@ using SimpleInjector;
 
 namespace Chapter04.Plugins.Dependencies
 {
-    class DependencyLoader : IDependencyLoader
+    public class DependencyLoader : IDependencyLoader
     {
         public void RegisterDependencies(Container container)
         {

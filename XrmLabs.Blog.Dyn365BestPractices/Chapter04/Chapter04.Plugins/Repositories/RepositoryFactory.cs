@@ -16,7 +16,7 @@ namespace Chapter04.Plugins.Repositories
         }
         public T Get<E, T>() where E : Entity where T : RepositoryBase<E>
         {
-            return this.container.GetInstance<T>();
+            return container.GetInstance(typeof(IRepository<E>)) as T;
         }
 
     }

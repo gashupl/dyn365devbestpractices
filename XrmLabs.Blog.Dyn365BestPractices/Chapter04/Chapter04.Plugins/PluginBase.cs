@@ -81,6 +81,8 @@ namespace Chapter04.FooPlugin
                 container.Register<IRepositoryFactory>(() => new RepositoryFactory(container));
                 container.Register<IServicesFactory>(() => new ServicesFactory(container));
 
+                this.RegisterDependencies(container); 
+
                 this.DependencyLoader.RegisterDependencies(container);
 
                 if (this.IsContextValid(pluginExecutionContext))
@@ -123,6 +125,9 @@ namespace Chapter04.FooPlugin
         public abstract bool IsContextValid(IPluginExecutionContext context);
 
         public abstract void Execute(IPluginExecutionContext pluginExecutionContext, Container container);
+
+        public abstract void RegisterDependencies(Container container); 
+
         #endregion
 
         #region Protected methods

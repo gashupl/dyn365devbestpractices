@@ -41,5 +41,10 @@ namespace Chapter04.Plugins
                 return false; 
             }
         }
+
+        public override void RegisterDependencies(Container container)
+        {
+            container.Register<IOpportunityTestService, OpportunityTestService>(); 
+        }
     }
 }

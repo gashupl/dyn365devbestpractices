@@ -18,7 +18,7 @@ namespace Chapter04.Plugin.Tests
             repo.Setup(r => r.Create(It.IsAny<Opportunity>())); 
 
             Container container = new Container();
-            container.Register<IOpportunityRepository>(() => repo.Object);
+            container.Register<IRepository<Opportunity>>(() => repo.Object);
 
             RepositoryFactory factory = new RepositoryFactory(container); 
             var testService = new OpportunityTestService(factory);

@@ -44,7 +44,10 @@ namespace Chapter04.Plugins
 
         public override void RegisterDependencies(Container container)
         {
-            container.Register<IOpportunityTestService, OpportunityTestService>(); 
+            if(container.GetRegistration(typeof(IOpportunityTestService)) == null)
+            {
+                container.Register<IOpportunityTestService, OpportunityTestService>();
+            }
         }
     }
 }

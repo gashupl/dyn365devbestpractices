@@ -89,7 +89,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chapter04.Plugins\Chapter04.Plugins.csproj">
+    <ProjectReference Include="..\..\Chapter04\Chapter04.Plugins\Chapter04.Plugins.csproj">
       <Project>{60abb3a1-da6c-4ac0-8556-5000ca611cfb}</Project>
       <Name>Chapter04.Plugins</Name>
     </ProjectReference>

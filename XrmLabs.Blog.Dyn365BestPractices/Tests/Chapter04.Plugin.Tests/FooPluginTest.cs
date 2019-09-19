@@ -25,6 +25,7 @@ namespace Chapter04.Plugin.Tests
             pluginExecutionContextMock.Setup(m => m.InputParameters).Returns(inputParameters); 
 
             var container = new Container();
+            container.Options.AllowOverridingRegistrations = true;
             container.Register<IOpportunityTestService>(() => opportunityTestServiceMock.Object);
 
             var fooPlugin = new Plugins.FooPlugin(String.Empty, String.Empty);

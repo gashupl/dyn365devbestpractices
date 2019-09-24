@@ -9,7 +9,7 @@ namespace Chapter04.Plugins.Dependencies
         public void RegisterDependencies(Container container)
         {
             container.Register<IOpportunityRepository, OpportunityRepository>();
-            container.Register<OpportunityTestService, OpportunityTestService>(); 
+            container.Register<OpportunityService, OpportunityService>(); 
 
             container.Verify();
         }

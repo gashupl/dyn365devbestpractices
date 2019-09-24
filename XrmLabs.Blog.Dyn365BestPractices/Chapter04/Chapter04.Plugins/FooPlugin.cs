@@ -9,6 +9,7 @@ using Chapter04.Plugins.Dependencies;
 using Common.Entities;
 using SimpleInjector;
 using Chapter04.Plugins.Services;
+using Chapter04.Plugins.Repositories;
 
 namespace Chapter04.Plugins
 {
@@ -24,7 +25,7 @@ namespace Chapter04.Plugins
         {
             var target = this.GetTargetEntity<Opportunity>(pluginExecutionContext); 
 
-            var testService = container.GetInstance<IOpportunityTestService>();
+            var testService = container.GetInstance<IOpportunityService>();
             testService.DoSomething(target); 
         }
 
@@ -44,7 +45,9 @@ namespace Chapter04.Plugins
 
         public override void RegisterDependencies(Container container)
         {
-            container.Register<IOpportunityTestService, OpportunityTestService>();
+           
+            container.Register<IOpportunityRepository, OpportunityRepository>();
+            container.Register<IOpportunityService, OpportunityService>();
         }
     }
 }

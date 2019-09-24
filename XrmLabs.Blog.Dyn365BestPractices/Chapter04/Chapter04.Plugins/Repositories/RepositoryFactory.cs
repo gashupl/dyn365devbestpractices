@@ -16,7 +16,12 @@ namespace Chapter04.Plugins.Repositories
         }
         public T Get<E, T>() where E : Entity where T : RepositoryBase<E>
         {
-            return container.GetInstance(typeof(IRepository<E>)) as T;
+            var context = container.GetInstance<IPluginExecutionContext>();
+            var orgServiceFactory = container.GetInstance<IOrganizationServiceFactory>();
+            var instance = container.GetInstance<IRepository<E>>() as T;
+            instance.Initialize(orgServiceFactory, context.UserId);
+            return instance; 
+          //  return container.GetInstance(typeof(IRepository<E>)) as T;
         }
 
     }

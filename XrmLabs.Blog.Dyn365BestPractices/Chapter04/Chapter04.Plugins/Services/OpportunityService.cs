@@ -3,10 +3,10 @@ using Common.Entities;
 
 namespace Chapter04.Plugins.Services
 {
-    public class OpportunityTestService : ServiceBase, IOpportunityTestService
+    public class OpportunityService : ServiceBase, IOpportunityService
     {
         private IOpportunityRepository opportunityRepository; 
-        public OpportunityTestService(IRepositoryFactory repositoryFactory) : base(repositoryFactory)
+        public OpportunityService(IRepositoryFactory repositoryFactory) : base(repositoryFactory)
         {
             this.opportunityRepository = repositoryFactory.Get<Opportunity, OpportunityRepository>(); 
         }

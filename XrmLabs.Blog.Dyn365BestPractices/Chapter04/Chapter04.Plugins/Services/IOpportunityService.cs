@@ -7,7 +7,7 @@ using Common.Entities;
 
 namespace Chapter04.Plugins.Services
 {
-    public interface IOpportunityTestService
+    public interface IOpportunityService
     {
         void DoSomething(Opportunity opportunity); 
     }

@@ -21,7 +21,7 @@ namespace Chapter04.Plugin.Tests
             var pluginExecutionContextMock = new Mock<IPluginExecutionContext>();
             pluginExecutionContextMock.Setup(m => m.InputParameters).Returns(inputParameters);
 
-            var opportunityTestServiceMock = new Mock<IOpportunityTestService>();
+            var opportunityTestServiceMock = new Mock<IOpportunityService>();
             opportunityTestServiceMock.Setup(m => m.DoSomething(It.IsAny<Opportunity>())).Callback(() => 
                 {
                     Console.WriteLine("Method executed");
@@ -29,7 +29,7 @@ namespace Chapter04.Plugin.Tests
 
             var container = new Container();
             container.Options.AllowOverridingRegistrations = true;
-            container.Register<IOpportunityTestService>(() => opportunityTestServiceMock.Object);
+            container.Register<IOpportunityService>(() => opportunityTestServiceMock.Object);
 
             var fooPlugin = new Plugins.FooPlugin(String.Empty, String.Empty);
             fooPlugin.Execute(pluginExecutionContextMock.Object, container); 

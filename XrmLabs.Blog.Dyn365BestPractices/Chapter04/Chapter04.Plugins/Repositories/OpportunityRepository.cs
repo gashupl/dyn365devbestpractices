@@ -10,10 +10,6 @@ namespace Chapter04.Plugins.Repositories
     public class OpportunityRepository : RepositoryBase<Opportunity>, IOpportunityRepository
     {
 
-        public OpportunityRepository(IOrganizationService service) : base(service)
-        {
-        }
-
         public List<Opportunity> GetByAccountId(Guid id)
         {
             var query = this.ServiceContext.OpportunitySet

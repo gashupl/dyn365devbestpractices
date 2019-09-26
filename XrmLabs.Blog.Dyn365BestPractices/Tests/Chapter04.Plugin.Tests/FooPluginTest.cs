@@ -17,12 +17,12 @@ namespace Chapter04.Plugin.Tests
         {
 
             var inputParameters = new ParameterCollection();
-            inputParameters.Add("Target", new Opportunity());
+            inputParameters.Add("Target", new Contact());
             var pluginExecutionContextMock = new Mock<IPluginExecutionContext>();
             pluginExecutionContextMock.Setup(m => m.InputParameters).Returns(inputParameters);
 
             var opportunityTestServiceMock = new Mock<IOpportunityService>();
-            opportunityTestServiceMock.Setup(m => m.DoSomething(It.IsAny<Opportunity>())).Callback(() => 
+            opportunityTestServiceMock.Setup(m => m.DoSomething(It.IsAny<Contact>())).Callback(() => 
                 {
                     Console.WriteLine("Method executed");
                 }); ;

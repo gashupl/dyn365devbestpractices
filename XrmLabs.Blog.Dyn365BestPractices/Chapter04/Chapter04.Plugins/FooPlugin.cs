@@ -16,14 +16,14 @@ namespace Chapter04.Plugins
     public class FooPlugin : PluginBase
     {
 
-        public override IDependencyLoader DependencyLoader { get; protected set; } = new DependencyLoader(); 
+        //public override IDependencyLoader DependencyLoader { get; protected set; } = new DependencyLoader(); 
         public FooPlugin(string unsecureString, string secureString) : base(unsecureString, secureString)
         {
         }
 
         public override void Execute(IPluginExecutionContext pluginExecutionContext, Container container)
         {
-            var target = this.GetTargetEntity<Opportunity>(pluginExecutionContext); 
+            var target = this.GetTargetEntity<Contact>(pluginExecutionContext); 
 
             var testService = container.GetInstance<IOpportunityService>();
             testService.DoSomething(target); 
@@ -33,7 +33,7 @@ namespace Chapter04.Plugins
 
         public override bool IsContextValid(IPluginExecutionContext context)
         {
-            if(context.PrimaryEntityName == Opportunity.EntityLogicalName)
+            if(context.PrimaryEntityName == Contact.EntityLogicalName)
             {
                 return true; 
             }

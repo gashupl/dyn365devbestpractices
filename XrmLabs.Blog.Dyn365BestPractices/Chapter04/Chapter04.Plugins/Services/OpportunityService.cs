@@ -8,12 +8,13 @@ namespace Chapter04.Plugins.Services
         private IOpportunityRepository opportunityRepository; 
         public OpportunityService(IRepositoryFactory repositoryFactory) : base(repositoryFactory)
         {
-            this.opportunityRepository = repositoryFactory.Get<Opportunity, OpportunityRepository>(); 
+            this.opportunityRepository = repositoryFactory.Get<Opportunity, IOpportunityRepository>(); 
         }
 
-        public void DoSomething(Opportunity opportunity)
+        public void DoSomething(Contact contact)
         {
-            this.opportunityRepository.Create(new Opportunity() { Name = "Test opportunity" }); 
+            this.opportunityRepository.Create(new Opportunity() { Name = "Test opportunity" });
+            this.opportunityRepository.SaveChanges(); 
         }
     }
 }

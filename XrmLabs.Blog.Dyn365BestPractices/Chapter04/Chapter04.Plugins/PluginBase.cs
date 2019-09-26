@@ -34,7 +34,7 @@ namespace Chapter04.FooPlugin
         /// </summary>
         protected string SecurePluginConfiguration { get; }
 
-        public abstract IDependencyLoader DependencyLoader { get; protected set; }
+       // public abstract IDependencyLoader DependencyLoader { get; protected set; }
         #endregion
 
         #region Constructor
@@ -83,7 +83,7 @@ namespace Chapter04.FooPlugin
 
                 this.RegisterDependencies(container); 
 
-                this.DependencyLoader.RegisterDependencies(container);
+                //this.DependencyLoader.RegisterDependencies(container);
 
                 if (this.IsContextValid(pluginExecutionContext))
                 {

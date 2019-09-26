@@ -9,6 +9,6 @@ namespace Chapter04.Plugins.Services
 {
     public interface IOpportunityService
     {
-        void DoSomething(Opportunity opportunity); 
+        void DoSomething(Contact contact); 
     }
 }

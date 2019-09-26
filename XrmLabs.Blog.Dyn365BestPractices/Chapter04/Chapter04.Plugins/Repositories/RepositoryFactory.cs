@@ -9,16 +9,15 @@ namespace Chapter04.Plugins.Repositories
     {
         private Container container; 
 
-        private IOrganizationService service;
         public RepositoryFactory(Container container)
         {
             this.container = container;
         }
-        public T Get<E, T>() where E : Entity where T : RepositoryBase<E>
+        public T Get<E, T>() where E : Entity where T : IRepository<E>
         {
             var context = container.GetInstance<IPluginExecutionContext>();
             var orgServiceFactory = container.GetInstance<IOrganizationServiceFactory>();
-            var instance = container.GetInstance<IRepository<E>>() as T;
+            var instance = (T)container.GetInstance(typeof(T));
             instance.Initialize(orgServiceFactory, context.UserId);
             return instance; 
           //  return container.GetInstance(typeof(IRepository<E>)) as T;

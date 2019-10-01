@@ -75,15 +75,14 @@ namespace Chapter04.FooPlugin
             try
             {
                 var container = new Container();
+
                 container.Register<ITracingService>(() => tracingService);
                 container.Register<IPluginExecutionContext>(() => pluginExecutionContext);
                 container.Register<IOrganizationServiceFactory>(() => serviceFactory);
                 container.Register<IRepositoryFactory>(() => new RepositoryFactory(container));
                 container.Register<IServicesFactory>(() => new ServicesFactory(container));
 
-                this.RegisterDependencies(container); 
-
-                //this.DependencyLoader.RegisterDependencies(container);
+                this.RegisterDependencies(container);
 
                 if (this.IsContextValid(pluginExecutionContext))
                 {
@@ -95,6 +94,7 @@ namespace Chapter04.FooPlugin
                     tracingService.Trace("Plugin execution aborted");
                     throw new InvalidPluginExecutionException("Invalid plugin execution context detected");
                 }
+
             }
             catch (InvalidPluginExecutionException)
             {

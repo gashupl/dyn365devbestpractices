@@ -76,6 +76,7 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RepositoryFactory.cs" />
     <Compile Include="Services\IOpportunityService.cs" />
+    <Compile Include="Services\IService.cs" />
     <Compile Include="Services\IServicesFactory.cs" />
     <Compile Include="Services\OpportunityService.cs" />
     <Compile Include="Services\ServiceBase.cs" />

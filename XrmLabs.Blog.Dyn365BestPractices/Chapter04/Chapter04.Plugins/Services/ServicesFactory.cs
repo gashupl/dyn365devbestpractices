@@ -15,9 +15,9 @@ namespace Chapter04.Plugins.Services
         {
             this.container = container;
         }
-        public T Get<T>() where T : ServiceBase
+        public T Get<T>() where T : IService
         {
-            return this.container.GetInstance<T>();
+            return (T)this.container.GetInstance(typeof(T));
         }
     }
 }

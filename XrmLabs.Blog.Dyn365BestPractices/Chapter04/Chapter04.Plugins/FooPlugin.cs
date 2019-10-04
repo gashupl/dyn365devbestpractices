@@ -23,9 +23,10 @@ namespace Chapter04.Plugins
 
         public override void Execute(IPluginExecutionContext pluginExecutionContext, Container container)
         {
-            var target = this.GetTargetEntity<Contact>(pluginExecutionContext); 
+            var target = this.GetTargetEntity<Contact>(pluginExecutionContext);
+            var factory = container.GetInstance<IServicesFactory>(); 
 
-            var testService = container.GetInstance<IOpportunityService>();
+            var testService = factory.Get<IOpportunityService>(); 
             testService.DoSomething(target); 
         }
 

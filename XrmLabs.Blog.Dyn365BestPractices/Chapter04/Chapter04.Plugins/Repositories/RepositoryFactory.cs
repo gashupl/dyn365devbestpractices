@@ -20,7 +20,6 @@ namespace Chapter04.Plugins.Repositories
             var instance = (T)container.GetInstance(typeof(T));
             instance.Initialize(orgServiceFactory, context.UserId);
             return instance; 
-          //  return container.GetInstance(typeof(IRepository<E>)) as T;
         }
 
         public T Get<E, T>(Guid userId) where E : Entity where T : IRepository<E>
@@ -30,8 +29,6 @@ namespace Chapter04.Plugins.Repositories
             var instance = (T)container.GetInstance(typeof(T));
             instance.Initialize(orgServiceFactory, userId);
             return instance;
-            //  return container.GetInstance(typeof(IRepository<E>)) as T;
         }
-
     }
 }

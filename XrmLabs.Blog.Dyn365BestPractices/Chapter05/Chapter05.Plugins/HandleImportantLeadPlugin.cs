@@ -26,8 +26,8 @@ namespace Chapter05.Plugins
             var target = this.GetTargetEntity<Lead>(pluginExecutionContext);
             var factory = container.GetInstance<IServicesFactory>(); 
 
-            var testService = factory.Get<INewLeadService>(); 
-            testService.TryCreateTaskForLargeEmployeesNumberLeads(target); 
+            var newLeadService = factory.Get<INewLeadService>();
+            newLeadService.TryCreateTaskForLargeEmployeesNumberLeads(target); 
         }
 
         public override bool IsContextValid(IPluginExecutionContext context)

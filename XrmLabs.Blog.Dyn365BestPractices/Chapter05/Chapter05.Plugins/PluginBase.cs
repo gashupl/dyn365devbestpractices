@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Xml;
-using Chapter05.Plugins.Dependencies;
-using Chapter05.Plugins.Repositories;
-using Chapter05.Plugins.Services;
+using Chapter05.Plugins.Repositories.Common;
+using Chapter05.Plugins.Services.Common;
 using Microsoft.Xrm.Sdk;
 using SimpleInjector;
 

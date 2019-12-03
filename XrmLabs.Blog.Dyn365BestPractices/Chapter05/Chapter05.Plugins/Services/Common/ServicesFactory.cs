@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chapter05.Plugins.Services
+namespace Chapter05.Plugins.Services.Common
 {
     public class ServicesFactory : IServicesFactory
     {

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chapter05.Plugins.Repositories;
+﻿using Chapter05.Plugins.Repositories.Common;
 
-namespace Chapter05.Plugins.Services
+namespace Chapter05.Plugins.Services.Common
 {
     public abstract class ServiceBase
     {

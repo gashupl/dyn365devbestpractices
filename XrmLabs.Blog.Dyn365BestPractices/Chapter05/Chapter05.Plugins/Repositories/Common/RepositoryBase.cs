@@ -2,7 +2,7 @@
 using Microsoft.Xrm.Sdk;
 using System;
 
-namespace Chapter05.Plugins.Repositories
+namespace Chapter05.Plugins.Repositories.Common
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : Entity
     {

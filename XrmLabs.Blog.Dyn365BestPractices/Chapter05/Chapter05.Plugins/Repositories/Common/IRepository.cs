@@ -1,11 +1,7 @@
 ﻿using Microsoft.Xrm.Sdk;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Chapter05.Plugins.Repositories
+namespace Chapter05.Plugins.Repositories.Common
 {
     public interface IRepository<T> where T: Entity
     {

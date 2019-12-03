@@ -60,25 +60,28 @@
   <ItemGroup>
     <Compile Include="Dependencies\DependencyLoader.cs" />
     <Compile Include="Dependencies\IDependencyLoader.cs" />
-    <Compile Include="FooPlugin.cs" />
+    <Compile Include="HandleImportantLeadPlugin.cs" />
     <Compile Include="PluginBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IOpportunityRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\IRepositoryFactory.cs" />
-    <Compile Include="Repositories\OpportunityRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\RepositoryFactory.cs" />
-    <Compile Include="Services\IOpportunityService.cs" />
-    <Compile Include="Services\IService.cs" />
-    <Compile Include="Services\IServicesFactory.cs" />
-    <Compile Include="Services\OpportunityService.cs" />
-    <Compile Include="Services\ServiceBase.cs" />
-    <Compile Include="Services\ServicesFactory.cs" />
+    <Compile Include="Repositories\ITaskRepository.cs" />
+    <Compile Include="Repositories\Common\IRepository.cs" />
+    <Compile Include="Repositories\Common\IRepositoryFactory.cs" />
+    <Compile Include="Repositories\ITeamRepository.cs" />
+    <Compile Include="Repositories\TaskRepository.cs" />
+    <Compile Include="Repositories\Common\RepositoryBase.cs" />
+    <Compile Include="Repositories\Common\RepositoryFactory.cs" />
+    <Compile Include="Repositories\TeamRepository.cs" />
+    <Compile Include="Services\INewLeadService.cs" />
+    <Compile Include="Services\Common\IService.cs" />
+    <Compile Include="Services\Common\IServicesFactory.cs" />
+    <Compile Include="Services\NewLeadService.cs" />
+    <Compile Include="Services\Common\ServiceBase.cs" />
+    <Compile Include="Services\Common\ServicesFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\..\Common\Entities\Entities.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

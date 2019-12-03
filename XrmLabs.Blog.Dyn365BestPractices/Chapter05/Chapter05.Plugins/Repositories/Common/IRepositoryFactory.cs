@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xrm.Sdk;
 
-namespace Chapter05.Plugins.Repositories
+namespace Chapter05.Plugins.Repositories.Common
 {
     public interface IRepositoryFactory
     {

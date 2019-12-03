@@ -1,4 +1,4 @@
-﻿namespace Chapter05.Plugins.Services
+﻿namespace Chapter05.Plugins.Services.Common
 {
     public interface IServicesFactory
     {

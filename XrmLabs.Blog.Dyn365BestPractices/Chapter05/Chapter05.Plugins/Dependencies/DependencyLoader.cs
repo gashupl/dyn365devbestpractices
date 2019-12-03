@@ -10,8 +10,8 @@ namespace Chapter05.Plugins.Dependencies
     {
         public void RegisterDependencies(Container container)
         {
-            container.Register<IOpportunityRepository, OpportunityRepository>();
-            container.Register<OpportunityService, OpportunityService>(); 
+            container.Register<ITaskRepository, TaskRepository>();
+            container.Register<NewLeadService, NewLeadService>(); 
 
             container.Verify();
         }

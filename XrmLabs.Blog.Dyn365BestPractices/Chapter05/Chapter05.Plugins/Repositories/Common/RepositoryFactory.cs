@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xrm.Sdk;
 using System;
-using Chapter05.Plugins.Repositories;
 using SimpleInjector;
 
-namespace Chapter05.Plugins.Repositories
+namespace Chapter05.Plugins.Repositories.Common
 {
     public class RepositoryFactory : IRepositoryFactory
     {

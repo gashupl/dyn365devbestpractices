@@ -113,13 +113,13 @@
     <Compile Include="Repositories\RepositoryTestBase.cs" />
     <Compile Include="Repositories\TaskRepositoryTest.cs" />
     <Compile Include="Repositories\TeamRepositoryTest.cs" />
+    <Compile Include="Services\NewLeadServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chapter05.Plugins\Chapter05.Plugins.csproj">

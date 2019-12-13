@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using Chapter05.FooPlugin;
 using Chapter05.Plugins.Services;
 using Chapter05.Plugins.Services.Common;
 using Common.Entities;
-using FakeXrmEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Moq;
@@ -62,7 +63,6 @@ namespace Chapter05.Plugins.Tests.Unit.Plugins
         }
 
 
-
         [TestMethod]
         public void Execute_ExecuteRequiredMethods()
         {
@@ -76,6 +76,10 @@ namespace Chapter05.Plugins.Tests.Unit.Plugins
             Mock<IPluginExecutionContext> pluginContextMock = new Mock<IPluginExecutionContext>();
             pluginContextMock.SetupGet(c => c.PrimaryEntityName).Returns(Lead.EntityLogicalName);
             pluginContextMock.SetupGet(c => c.MessageName).Returns("Create");
+            pluginContextMock.SetupGet(c => c.InputParameters).Returns(new ParameterCollection()
+            {
+                new KeyValuePair<string, object>(PluginBase.TargetAttributeName, new Lead())
+            }); 
 
 
             var plugin = new HandleImportantLeadPlugin(String.Empty, String.Empty);

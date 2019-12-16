@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Chapter04.Plugins.Repositories;
 using Common.Entities;
-using Microsoft.Xrm.Sdk;
 
 namespace Chapter04.Plugins.Repositories
 {

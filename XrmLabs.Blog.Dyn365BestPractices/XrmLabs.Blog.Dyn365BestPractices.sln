@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter05.Plugins", "Chapte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter05.Plugins.Tests.Unit", "Chapter05\Chapter05.Plugins.Tests.Unit\Chapter05.Plugins.Tests.Unit.csproj", "{665DBA8B-CA3C-4261-A369-33C7589A2C0B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter06", "Chapter06", "{D2136F98-3DD8-4294-94BE-D7F7C0DBFADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter06.Plugins", "Chapter06\Chapter06.Plugins\Chapter06.Plugins.csproj", "{D88E53C7-A0B0-4CFF-A679-AC9259CCD9CE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Common\Entities\Entities.projitems*{218e8399-434d-49df-aa96-6f6f6166b8a7}*SharedItemsImports = 4
@@ -84,6 +88,10 @@ Global
 		{665DBA8B-CA3C-4261-A369-33C7589A2C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{665DBA8B-CA3C-4261-A369-33C7589A2C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{665DBA8B-CA3C-4261-A369-33C7589A2C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D88E53C7-A0B0-4CFF-A679-AC9259CCD9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88E53C7-A0B0-4CFF-A679-AC9259CCD9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88E53C7-A0B0-4CFF-A679-AC9259CCD9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88E53C7-A0B0-4CFF-A679-AC9259CCD9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +106,7 @@ Global
 		{AF8D4F54-FDBF-47BC-8B4C-93B0E03D74B2} = {D11939F6-111A-4487-802F-9199306FFE6E}
 		{6C98AFFB-48B3-440A-97D2-A49C2AB26BC2} = {7FF293BF-6D67-4E35-AB0E-B7D8B9BD787D}
 		{665DBA8B-CA3C-4261-A369-33C7589A2C0B} = {7FF293BF-6D67-4E35-AB0E-B7D8B9BD787D}
+		{D88E53C7-A0B0-4CFF-A679-AC9259CCD9CE} = {D2136F98-3DD8-4294-94BE-D7F7C0DBFADC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F721D344-B887-4FF4-B915-6F11862B44D1}

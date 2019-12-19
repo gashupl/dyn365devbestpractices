@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chapter06.Plugins
+namespace Chapter06.Plugins.Plugins.Lead
 {
-    public class Class1
+    class LeadPostUpdateHandler
     {
     }
 }

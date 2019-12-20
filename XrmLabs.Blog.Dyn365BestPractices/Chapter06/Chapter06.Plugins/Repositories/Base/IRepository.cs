@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 
-namespace Chapter06.Plugins.Repositories
+namespace Chapter06.Plugins.Repositories.Base
 {
     public interface IRepository<E> : IRepositoryBase where E : Entity
     {

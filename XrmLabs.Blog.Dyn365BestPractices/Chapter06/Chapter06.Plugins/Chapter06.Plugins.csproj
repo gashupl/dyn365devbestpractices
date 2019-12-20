@@ -65,11 +65,15 @@
     <Compile Include="Plugins\PluginBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CdsUnitOfWorkRepository.cs" />
-    <Compile Include="Repositories\ICdsUnitOfWorkRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\IRepositoryBase.cs" />
-    <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\Base\ICdsUnitOfWorkRepository.cs" />
+    <Compile Include="Repositories\Base\IRepository.cs" />
+    <Compile Include="Repositories\Base\IRepositoryBase.cs" />
+    <Compile Include="Repositories\Base\Repository.cs" />
+    <Compile Include="Repositories\Base\RepositoryBase.cs" />
+    <Compile Include="Repositories\ITaskRepository.cs" />
+    <Compile Include="Repositories\ITeamRepository.cs" />
+    <Compile Include="Repositories\TaskRepository.cs" />
+    <Compile Include="Repositories\TeamRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

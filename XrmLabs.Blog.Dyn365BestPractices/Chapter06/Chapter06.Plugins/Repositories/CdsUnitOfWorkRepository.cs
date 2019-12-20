@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Chapter06.Plugins.Common;
+using Chapter06.Plugins.Repositories.Base;
+using Common.Entities;
 using Microsoft.Xrm.Sdk;
 
 namespace Chapter06.Plugins.Repositories
 {
     class CdsUnitOfWorkRepository : ICdsUnitOfWorkRepository
     {
-        private ICdsServiceProvider serviceProvider = null;
+        private readonly ICdsServiceProvider serviceProvider = null;
 
         public CdsUnitOfWorkRepository()
         {
@@ -24,7 +22,8 @@ namespace Chapter06.Plugins.Repositories
 
         private void SetMapping()
         {
-            //Place your mappings here
+            RegisterEntityRepository<ITaskRepository, Task, TaskRepository>();
+            RegisterEntityRepository<ITeamRepository, Team, TeamRepository>();
         }
 
 
@@ -36,6 +35,15 @@ namespace Chapter06.Plugins.Repositories
         public E GetRepository<E>()
         {
             throw new NotImplementedException();
+        }
+
+        private void RegisterEntityRepository<RepoInterface, EntityProxyClass, RepoImplementation>()
+            where RepoInterface : IRepository<EntityProxyClass>
+            where EntityProxyClass : Entity, new()
+            where RepoImplementation : RepoInterface, new()
+        {
+            //TODO: Implement registration with SimpleInjector
+            throw new NotImplementedException(); 
         }
     }
 }

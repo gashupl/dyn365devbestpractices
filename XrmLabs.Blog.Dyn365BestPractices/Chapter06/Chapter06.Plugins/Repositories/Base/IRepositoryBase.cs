@@ -5,7 +5,7 @@ using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 
-namespace Chapter06.Plugins.Repositories
+namespace Chapter06.Plugins.Repositories.Base
 {
     public interface IRepositoryBase
     {

@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xrm.Sdk;
+using Chapter06.Plugins.Repositories.Base;
+using Common.Entities;
 
 namespace Chapter06.Plugins.Repositories
 {
-    public interface ICdsUnitOfWorkRepository
+    public interface ITeamRepository : IRepository<Team>
     {
-        IRepository<E> GetRepositoryEntity<E>() where E : Entity, new();
-
-        E GetRepository<E>();
-
+        Team GetSalesTeam(); 
     }
 }

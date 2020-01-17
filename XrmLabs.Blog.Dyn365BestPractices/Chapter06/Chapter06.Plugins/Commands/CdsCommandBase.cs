@@ -14,11 +14,6 @@ namespace Chapter06.Plugins.Commands
 
         protected IPluginExecutionContext Context { get; set; }
 
-        protected EntityReferenceCollection RelatedEntities { get; set; }
-
-        // Associate
-        protected string RelationshipName { get; private set; }
-
         protected ITracingService TracingService { get; set; }
 
         //protected ICrmUnitOfWorkService CrmUnitOfWorkService { get; private set; }
@@ -33,17 +28,6 @@ namespace Chapter06.Plugins.Commands
             this.TracingService = tracingService;
             this.CrmUnitOfWorkRepository = unitOfWorkRepository;
 
-            this.InitializeRelatedEntities();
-        }
-
-        private void InitializeRelatedEntities()
-        {
-            if (this.Context != null &&
-                this.Context.InputParameters.Contains("RelatedEntities"))
-            {
-                this.RelatedEntities = this.Context.InputParameters["RelatedEntities"] as EntityReferenceCollection;
-                this.RelationshipName = this.Context.InputParameters["Relationship"].ToString();
-            }
         }
     }
 }

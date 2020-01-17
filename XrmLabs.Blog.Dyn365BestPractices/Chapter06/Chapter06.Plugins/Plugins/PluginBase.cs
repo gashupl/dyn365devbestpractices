@@ -11,26 +11,26 @@ namespace Chapter06.Plugins.Plugins
     {
         protected ICdsUnitOfWorkRepository CdsUnitOfWorkRepository { get; private set; }
 
-        public abstract void RegisterActions(CdsCommandFactory<E> actionFactory, List<ICdsCommand> registeredActions);
+        public abstract void RegisterCommands(CdsCommandFactory<E> commandsFactory, List<ICdsCommand> registeredCommands);
 
         public void Execute(IServiceProvider serviceProvider)
         {
             using (var crmSericeProvider = new CdsServiceProvider(serviceProvider))
             {
-                var actionFactory = new CdsCommandFactory<E>(crmSericeProvider, this.CdsUnitOfWorkRepository);
-                var registeredActions = new List<ICdsCommand>();
+                var commandsFactory = new CdsCommandFactory<E>(crmSericeProvider, this.CdsUnitOfWorkRepository);
+                var registeredCommands = new List<ICdsCommand>();
 
-                RegisterActions(actionFactory, registeredActions);
+                RegisterCommands(commandsFactory, registeredCommands);
 
-                foreach (ICdsCommand action in registeredActions)
+                foreach (ICdsCommand command in registeredCommands)
                 {
-                    var actionName = action.GetType().Name.ToString();
+                    var actionName = command.GetType().Name.ToString();
 
-                    if (action.CanExecute())
+                    if (command.CanExecute())
                     {
-                        crmSericeProvider.TracingService.Trace("# {0} - start", actionName);
-                        action.Execute();
-                        crmSericeProvider.TracingService.Trace("# {0} - end", actionName);
+                        crmSericeProvider.TracingService.Trace($"{actionName} - execution started");
+                        command.Execute();
+                        crmSericeProvider.TracingService.Trace($"{actionName} - execution completed" );
                     }
                 }
             }

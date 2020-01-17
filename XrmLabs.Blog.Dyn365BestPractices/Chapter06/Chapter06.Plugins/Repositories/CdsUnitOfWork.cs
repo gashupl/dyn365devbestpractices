@@ -6,16 +6,16 @@ using Microsoft.Xrm.Sdk;
 
 namespace Chapter06.Plugins.Repositories
 {
-    class CdsUnitOfWorkRepository : ICdsUnitOfWorkRepository
+    class CdsUnitOfWork : ICdsUnitOfWorkRepository
     {
         private readonly ICdsServiceProvider serviceProvider = null;
 
-        public CdsUnitOfWorkRepository()
+        public CdsUnitOfWork()
         {
             SetMapping();
         }
 
-        public CdsUnitOfWorkRepository(ICdsServiceProvider serviceProvider) : this()
+        public CdsUnitOfWork(ICdsServiceProvider serviceProvider) : this()
         {
             this.serviceProvider = serviceProvider;
         }

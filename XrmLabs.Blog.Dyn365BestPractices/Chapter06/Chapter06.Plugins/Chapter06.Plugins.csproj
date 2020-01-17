@@ -60,11 +60,11 @@
     <Compile Include="Commands\ICdsCommand.cs" />
     <Compile Include="Common\CdsServiceProvider.cs" />
     <Compile Include="Common\ICdsServiceProvider.cs" />
-    <Compile Include="Plugins\Lead\LeadPostCreateHandler.cs" />
-    <Compile Include="Plugins\Lead\LeadPostUpdateHandler.cs" />
+    <Compile Include="Plugins\Leads\LeadPostCreateHandler.cs" />
+    <Compile Include="Plugins\Leads\LeadPostUpdateHandler.cs" />
     <Compile Include="Plugins\PluginBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CdsUnitOfWorkRepository.cs" />
+    <Compile Include="Repositories\CdsUnitOfWork.cs" />
     <Compile Include="Repositories\Base\ICdsUnitOfWorkRepository.cs" />
     <Compile Include="Repositories\Base\IRepository.cs" />
     <Compile Include="Repositories\Base\IRepositoryBase.cs" />

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chapter06.Plugins.Common;
+﻿using Chapter06.Plugins.Common;
 using Chapter06.Plugins.Repositories;
 using Chapter06.Plugins.Repositories.Base;
 using Microsoft.Xrm.Sdk;
@@ -12,13 +7,14 @@ namespace Chapter06.Plugins.Commands
 {
     public class CdsCommandFactory<E> where  E: Entity 
     {
-        private ICdsServiceProvider serviceProvider;
-        private ICdsUnitOfWorkRepository cdsUnitOfWorkRepository { get; set; }
+        protected ICdsServiceProvider serviceProvider { get; private set; }
+
+        protected ICdsUnitOfWorkRepository cdsUnitOfWorkRepository { get; private set; }
 
         public CdsCommandFactory(ICdsServiceProvider serviceProvider,  ICdsUnitOfWorkRepository cdsUnitOfWorkRepository)
         {
             this.serviceProvider = serviceProvider;
-            this.cdsUnitOfWorkRepository = cdsUnitOfWorkRepository == null ? new CdsUnitOfWorkRepository(this.serviceProvider) : cdsUnitOfWorkRepository;
+            this.cdsUnitOfWorkRepository = cdsUnitOfWorkRepository ?? new CdsUnitOfWork(this.serviceProvider);
         }
 
         public ICdsCommand GetCommand<T>()  where T : CdsCommandBase, new()

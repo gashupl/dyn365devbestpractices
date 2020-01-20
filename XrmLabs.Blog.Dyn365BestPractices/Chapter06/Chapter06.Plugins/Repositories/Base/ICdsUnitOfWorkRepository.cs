@@ -11,7 +11,7 @@ namespace Chapter06.Plugins.Repositories.Base
     {
         IRepository<E> GetRepositoryEntity<E>() where E : Entity, new();
 
-        E GetRepository<E>();
+        E GetRepository<E>() where E : class; 
 
     }
 }

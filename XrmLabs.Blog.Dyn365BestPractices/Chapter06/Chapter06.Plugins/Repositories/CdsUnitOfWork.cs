@@ -3,12 +3,14 @@ using Chapter06.Plugins.Common;
 using Chapter06.Plugins.Repositories.Base;
 using Common.Entities;
 using Microsoft.Xrm.Sdk;
+using SimpleInjector;
 
 namespace Chapter06.Plugins.Repositories
 {
     class CdsUnitOfWork : ICdsUnitOfWorkRepository
     {
         private readonly ICdsServiceProvider serviceProvider = null;
+        Container container = new Container();
 
         public CdsUnitOfWork()
         {
@@ -26,24 +28,23 @@ namespace Chapter06.Plugins.Repositories
             RegisterEntityRepository<ITeamRepository, Team, TeamRepository>();
         }
 
-
         public IRepository<E> GetRepositoryEntity<E>() where E : Entity, new()
         {
-            throw new NotImplementedException();
+            return container.GetInstance<IRepository<E>>(); 
         }
 
-        public E GetRepository<E>()
+        public E GetRepository<E>() where E : class
         {
-            throw new NotImplementedException();
+            return container.GetInstance<E>(); 
         }
 
-        private void RegisterEntityRepository<RepoInterface, EntityProxyClass, RepoImplementation>()
-            where RepoInterface : IRepository<EntityProxyClass>
-            where EntityProxyClass : Entity, new()
-            where RepoImplementation : RepoInterface, new()
+        private void RegisterEntityRepository<TRepoInterface, TEntityProxyClass, TRepoImplementation>()
+            where TRepoInterface : IRepository<TEntityProxyClass>
+            where TEntityProxyClass : Entity, new()
+            where TRepoImplementation : TRepoInterface, new()
         {
-            //TODO: Implement registration with SimpleInjector
-            throw new NotImplementedException(); 
+            container.Register(typeof(TRepoInterface), typeof(TRepoImplementation));
+            container.Register(typeof(IRepository<TEntityProxyClass>), typeof(TRepoImplementation));
         }
     }
 }

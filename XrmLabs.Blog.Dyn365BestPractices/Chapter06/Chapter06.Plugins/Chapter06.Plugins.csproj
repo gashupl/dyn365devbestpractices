@@ -55,9 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CdsCommandFactory.cs" />
-    <Compile Include="Commands\CdsCommandBase.cs" />
-    <Compile Include="Commands\ICdsCommand.cs" />
+    <Compile Include="Commands\Base\CdsCommandFactory.cs" />
+    <Compile Include="Commands\Base\CdsCommandBase.cs" />
+    <Compile Include="Commands\Base\ICdsCommand.cs" />
     <Compile Include="Common\CdsServiceProvider.cs" />
     <Compile Include="Common\ICdsServiceProvider.cs" />
     <Compile Include="Plugins\Leads\LeadPostCreateHandler.cs" />

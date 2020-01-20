@@ -7,7 +7,7 @@ using Chapter06.Plugins.Repositories;
 using Chapter06.Plugins.Repositories.Base;
 using Microsoft.Xrm.Sdk;
 
-namespace Chapter06.Plugins.Commands
+namespace Chapter06.Plugins.Commands.Base
 {
     public abstract class CdsCommandBase : ICdsCommand
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chapter06.Plugins.Commands
+namespace Chapter06.Plugins.Commands.Base
 {
     public interface ICdsCommand
     {

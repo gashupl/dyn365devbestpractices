@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chapter06.Plugins.Commands;
-using Chapter06.Plugins.Repositories;
+﻿using System.Collections.Generic;
+using Chapter06.Plugins.Commands.Base;
 using Common.Entities; 
 
 namespace Chapter06.Plugins.Plugins.Leads

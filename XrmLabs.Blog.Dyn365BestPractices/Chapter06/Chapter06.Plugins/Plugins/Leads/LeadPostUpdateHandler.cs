@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Chapter06.Plugins.Commands;
+using Chapter06.Plugins.Commands.Base;
 using Common.Entities;
 
 namespace Chapter06.Plugins.Plugins.Leads

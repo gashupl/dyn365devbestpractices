@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Chapter06.Plugins.Commands;
+using Chapter06.Plugins.Commands.Base;
 using Chapter06.Plugins.Common;
 using Chapter06.Plugins.Repositories.Base;
 using Microsoft.Xrm.Sdk;

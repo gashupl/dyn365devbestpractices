@@ -8,8 +8,9 @@ namespace Chapter06.Plugins.Plugins.Leads
 {
     public class LeadPostUpdateHandler : PluginBase<Lead>
     {
-        public override void RegisterCommands(CdsCommandFactory<Lead> actionFactory, List<ICdsCommand> registeredActions)
+        public override void RegisterCommands(CdsCommandFactory<Lead> commandFactory, List<ICdsCommand> registeredActions)
         {
+            registeredActions.Add(commandFactory.GetCommand<TryCreateTaskCommand>());
         }
     }
 }

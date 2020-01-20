@@ -26,5 +26,7 @@ namespace Chapter06.Plugins.Repositories.Base
 
         void Upsert(E entity);
 
+        void SaveChanges(); 
+
     }
 }

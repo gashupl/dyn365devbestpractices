@@ -17,7 +17,12 @@ namespace Chapter06.Plugins.Commands.Base
         protected ITracingService TracingService { get; set; }
 
         //protected ICrmUnitOfWorkService CrmUnitOfWorkService { get; private set; }
-        protected ICdsUnitOfWorkRepository CrmUnitOfWorkRepository { get; private set; }
+        protected ICdsUnitOfWorkRepository CdsUnitOfWorkRepository { get; private set; }
+
+        protected Entity TargetEntity
+        {
+            get { return Context?.InputParameters["Target"] as Entity;  }
+        }
 
         public abstract bool CanExecute();
         public abstract void Execute();
@@ -26,7 +31,7 @@ namespace Chapter06.Plugins.Commands.Base
         {
             this.Context = context;
             this.TracingService = tracingService;
-            this.CrmUnitOfWorkRepository = unitOfWorkRepository;
+            this.CdsUnitOfWorkRepository = unitOfWorkRepository;
 
         }
     }

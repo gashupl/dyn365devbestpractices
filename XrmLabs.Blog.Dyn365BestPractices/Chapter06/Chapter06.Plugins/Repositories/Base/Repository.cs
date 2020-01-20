@@ -104,6 +104,11 @@ namespace Chapter06.Plugins.Repositories.Base
             this.Service.Execute(request);
         }
 
+        public void SaveChanges()
+        {
+            this.CdsContext.SaveChanges(); 
+        }
+
         public void Delete(Guid id)
         {
             this.Service.Delete(this.LogicalName, id);

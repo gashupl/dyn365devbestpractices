@@ -28,15 +28,6 @@ namespace Chapter06.Plugins.Common
             Initialize(serviceProvider, userId); 
         }
 
-        private void Initialize(IServiceProvider serviceProvider, Guid UserId)
-        {
-            this.ServiceProvider = serviceProvider;
-            this.Context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-            Factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            Service = Factory.CreateOrganizationService(UserId);
-            this.ServiceContext = new Dyn365ServiceContext(this.Service);
-        }
-
         public CdsServiceProvider(OrganizationServiceProxy serviceProxy)
         {
             this.ServiceProvider = null;
@@ -51,10 +42,17 @@ namespace Chapter06.Plugins.Common
             this.Service = service;
         }
 
-
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+        private void Initialize(IServiceProvider serviceProvider, Guid UserId)
+        {
+            this.ServiceProvider = serviceProvider;
+            this.Context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
+            Factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+            Service = Factory.CreateOrganizationService(UserId);
+            this.ServiceContext = new Dyn365ServiceContext(this.Service);
         }
     }
 }

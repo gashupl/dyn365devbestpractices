@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Entities;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
@@ -12,63 +8,49 @@ namespace Chapter06.Plugins.Common
     internal class CdsServiceProvider : ICdsServiceProvider
     {
 
-        public IServiceProvider ServiceProvider { get; }
-        public IPluginExecutionContext Context { get; }
-        public IOrganizationServiceFactory Factory { get; }
+        public IServiceProvider ServiceProvider { get; private set; }
+        public IPluginExecutionContext Context { get; private set; }
+        public IOrganizationServiceFactory Factory { get; private set; }
+        public Dyn365ServiceContext ServiceContext { get; private set; }
 
-        public Dyn365ServiceContext ServiceContext { get; }
-        public ITracingService TracingService { get; }
+        //public Dyn365ServiceContext ServiceContext { get; }
+        public ITracingService TracingService { get; private set; }
 
-       
-        private IOrganizationService service = null;
-        public IOrganizationService Service
-        {
-            get
-            {
-                if (service == null)
-                {
-                    service = Factory.CreateOrganizationService(Context.UserId);
-                }
-                return service;
-            }
-        }
+        public IOrganizationService Service { get; private set; }
 
         public CdsServiceProvider(IServiceProvider serviceProvider)
         {
-            this.ServiceProvider = serviceProvider;
+            Initialize(serviceProvider, Context.UserId);
         }
 
-        public CdsServiceProvider(IServiceProvider serviceProvider, Guid UserId) : this(serviceProvider)
+        public CdsServiceProvider(IServiceProvider serviceProvider, Guid userId) : this(serviceProvider)
         {
-            this.CreateOrganizationServiceForUser(UserId);
+            Initialize(serviceProvider, userId); 
         }
 
-        public CdsServiceProvider(OrganizationServiceProxy service)
+        private void Initialize(IServiceProvider serviceProvider, Guid UserId)
+        {
+            this.ServiceProvider = serviceProvider;
+            this.Context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
+            Factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+            Service = Factory.CreateOrganizationService(UserId);
+            this.ServiceContext = new Dyn365ServiceContext(this.Service);
+        }
+
+        public CdsServiceProvider(OrganizationServiceProxy serviceProxy)
         {
             this.ServiceProvider = null;
-            service.EnableProxyTypes();
-            service.Timeout = new TimeSpan(0, 5, 0);
-            this.service = service;
+            serviceProxy.EnableProxyTypes();
+            serviceProxy.Timeout = new TimeSpan(0, 5, 0);
+            this.Service = serviceProxy;
         }
 
         public CdsServiceProvider(IOrganizationService service)
         {
             this.ServiceProvider = null;
-            this.service = service;
+            this.Service = service;
         }
 
-        private void CreateOrganizationServiceForUser(Guid UserId)
-        {
-            if (service == null)
-            {
-                service = Factory.CreateOrganizationService(UserId);
-            }
-            else
-            {
-                throw new InvalidPluginExecutionException("Organization Service has already been created.");
-            }
-
-        }
 
         public void Dispose()
         {

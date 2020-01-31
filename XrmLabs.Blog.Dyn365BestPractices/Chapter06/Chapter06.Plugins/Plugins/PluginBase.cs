@@ -8,17 +8,17 @@ using Microsoft.Xrm.Sdk;
 
 namespace Chapter06.Plugins.Plugins
 {
-    public abstract class PluginBase<E> : IPlugin where E: Entity
+    public abstract class PluginBase: IPlugin
     {
         protected ICdsUnitOfWorkRepository CdsUnitOfWorkRepository { get; private set; }
 
-        public abstract void RegisterCommands(CdsCommandFactory<E> commandsFactory, List<ICdsCommand> registeredCommands);
+        public abstract void RegisterCommands(CdsCommandFactory commandsFactory, List<ICdsCommand> registeredCommands); 
 
         public void Execute(IServiceProvider serviceProvider)
         {
             using (var crmSericeProvider = new CdsServiceProvider(serviceProvider))
             {
-                var commandsFactory = new CdsCommandFactory<E>(crmSericeProvider, this.CdsUnitOfWorkRepository);
+                var commandsFactory = new CdsCommandFactory(crmSericeProvider, this.CdsUnitOfWorkRepository);
                 var registeredCommands = new List<ICdsCommand>();
 
                 RegisterCommands(commandsFactory, registeredCommands);

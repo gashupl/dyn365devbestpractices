@@ -5,7 +5,7 @@ using Microsoft.Xrm.Sdk;
 
 namespace Chapter06.Plugins.Commands.Base
 {
-    public class CdsCommandFactory<E> where  E: Entity 
+    public class CdsCommandFactory 
     {
         protected ICdsServiceProvider serviceProvider { get; private set; }
 

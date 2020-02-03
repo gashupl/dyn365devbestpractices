@@ -13,14 +13,13 @@ namespace Chapter06.Plugins.Common
         public IOrganizationServiceFactory Factory { get; private set; }
         public Dyn365ServiceContext ServiceContext { get; private set; }
 
-        //public Dyn365ServiceContext ServiceContext { get; }
         public ITracingService TracingService { get; private set; }
 
         public IOrganizationService Service { get; private set; }
 
         public CdsServiceProvider(IServiceProvider serviceProvider)
         {
-            Initialize(serviceProvider, Context.UserId);
+            Initialize(serviceProvider);
         }
 
         public CdsServiceProvider(IServiceProvider serviceProvider, Guid userId) : this(serviceProvider)
@@ -46,12 +45,20 @@ namespace Chapter06.Plugins.Common
         {
             GC.SuppressFinalize(this);
         }
-        private void Initialize(IServiceProvider serviceProvider, Guid UserId)
+        private void Initialize(IServiceProvider serviceProvider, Guid? userId = null)
         {
             this.ServiceProvider = serviceProvider;
             this.Context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-            Factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            Service = Factory.CreateOrganizationService(UserId);
+            this.Factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+            if(userId == null)
+            {
+                this.Service = Factory.CreateOrganizationService(this.Context.UserId);
+            }
+            else
+            {
+                this.Service = Factory.CreateOrganizationService(userId);
+            }
+            this.TracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
             this.ServiceContext = new Dyn365ServiceContext(this.Service);
         }
     }

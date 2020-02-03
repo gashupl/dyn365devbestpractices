@@ -8,7 +8,7 @@ namespace Chapter06.Plugins.Commands
     {
         public override bool CanExecute()
         {
-            if (this.Context.PrimaryEntityName == "Lead" && (this.Context.MessageName == "Create" || this.Context.MessageName == "Update"))
+            if (this.Context.PrimaryEntityName == Lead.EntityLogicalName && (this.Context.MessageName == "Create" || this.Context.MessageName == "Update"))
             {
                 return true; 
             }

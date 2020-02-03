@@ -12,20 +12,18 @@ namespace Chapter06.Plugins.Repositories
         private readonly ICdsServiceProvider serviceProvider = null;
         Container container = new Container();
 
-        public CdsUnitOfWork()
-        {
-            SetMapping();
-        }
 
-        public CdsUnitOfWork(ICdsServiceProvider serviceProvider) : this()
+        public CdsUnitOfWork(ICdsServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
+            SetMapping();
         }
 
         private void SetMapping()
         {
-            RegisterEntityRepository<ITaskRepository, Task, TaskRepository>();
-            RegisterEntityRepository<ITeamRepository, Team, TeamRepository>();
+            //TODO: Fix registration repositories with the new argumented constructor
+            //RegisterEntityRepository<ITaskRepository, Task, TaskRepository>();
+            //RegisterEntityRepository<ITeamRepository, Team, TeamRepository>();
         }
 
         public IRepository<E> GetRepositoryEntity<E>() where E : Entity, new()

@@ -1,7 +1,6 @@
 ﻿using Chapter06.Plugins.Common;
 using Chapter06.Plugins.Repositories;
 using Chapter06.Plugins.Repositories.Base;
-using Microsoft.Xrm.Sdk;
 
 namespace Chapter06.Plugins.Commands.Base
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Chapter06.Plugins.Common;
+using Common.Entities;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
@@ -14,15 +15,12 @@ namespace Chapter06.Plugins.Repositories.Base
     {
 
         protected IOrganizationService Service { get; set; }
+        protected Dyn365ServiceContext CdsContext { get; set; }
 
-        public RepositoryBase()
-        {
-        }
-
-        public virtual IRepositoryBase Initialize(ICdsServiceProvider serviceProvider)
+        public RepositoryBase(ICdsServiceProvider serviceProvider)
         {
             this.Service = serviceProvider.Service;
-            return this;
+            this.CdsContext = new Dyn365ServiceContext(this.Service); 
         }
 
         public Entity GetById(string entityLocalName, Guid entId)

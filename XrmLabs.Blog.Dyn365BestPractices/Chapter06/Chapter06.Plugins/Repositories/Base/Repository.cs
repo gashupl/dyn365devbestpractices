@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Chapter06.Plugins.Common;
 using Common.Entities;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
@@ -9,7 +10,10 @@ namespace Chapter06.Plugins.Repositories.Base
 {
     public partial class Repository<E> : RepositoryBase, IRepository<E> where E : Entity
     {
-        protected Dyn365ServiceContext CdsContext { get; set; }
+        public Repository(ICdsServiceProvider serviceProvider) : base(serviceProvider)
+        {
+        }
+
 
         //public override IRepository Initialize(ICdsServiceProvider serviceProvider)
         //{

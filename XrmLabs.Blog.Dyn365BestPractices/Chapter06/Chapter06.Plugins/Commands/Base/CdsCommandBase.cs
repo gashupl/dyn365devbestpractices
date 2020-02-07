@@ -10,8 +10,7 @@ namespace Chapter06.Plugins.Commands.Base
 
         protected ITracingService TracingService { get; set; }
 
-        //protected ICrmUnitOfWorkService CrmUnitOfWorkService { get; private set; }
-        protected ICdsUnitOfWorkRepository CdsUnitOfWorkRepository { get; private set; }
+        protected ICdsRepositoryFactory CdsRepositoryFactory { get; private set; }
 
         protected Entity TargetEntity
         {
@@ -21,11 +20,11 @@ namespace Chapter06.Plugins.Commands.Base
         public abstract bool CanExecute();
         public abstract void Execute();
 
-        public void Initialize(IPluginExecutionContext context, ITracingService tracingService, ICdsUnitOfWorkRepository unitOfWorkRepository)
+        public void Initialize(IPluginExecutionContext context, ITracingService tracingService, ICdsRepositoryFactory repositoryFactory)
         {
             this.Context = context;
             this.TracingService = tracingService;
-            this.CdsUnitOfWorkRepository = unitOfWorkRepository;
+            this.CdsRepositoryFactory = repositoryFactory;
 
         }
     }

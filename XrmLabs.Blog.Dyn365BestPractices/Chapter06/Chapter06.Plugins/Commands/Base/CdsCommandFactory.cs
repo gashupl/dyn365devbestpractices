@@ -8,18 +8,18 @@ namespace Chapter06.Plugins.Commands.Base
     {
         protected ICdsServiceProvider serviceProvider { get; private set; }
 
-        protected ICdsUnitOfWorkRepository cdsUnitOfWorkRepository { get; private set; }
+        protected ICdsRepositoryFactory cdsRepositoryFactory { get; private set; }
 
-        public CdsCommandFactory(ICdsServiceProvider serviceProvider,  ICdsUnitOfWorkRepository cdsUnitOfWorkRepository)
+        public CdsCommandFactory(ICdsServiceProvider serviceProvider, ICdsRepositoryFactory cdsRepositoryFactory)
         {
             this.serviceProvider = serviceProvider;
-            this.cdsUnitOfWorkRepository = cdsUnitOfWorkRepository ?? new CdsUnitOfWork(this.serviceProvider);
+            this.cdsRepositoryFactory = cdsRepositoryFactory ?? new CdsRepositoryFactory(this.serviceProvider);
         }
 
         public ICdsCommand GetCommand<T>()  where T : CdsCommandBase, new()
         {
             T command = new T();
-            command.Initialize(this.serviceProvider.Context, this.serviceProvider.TracingService, this.cdsUnitOfWorkRepository);
+            command.Initialize(this.serviceProvider.Context, this.serviceProvider.TracingService, this.cdsRepositoryFactory);
             return command;
         }
     }

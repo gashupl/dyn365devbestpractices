@@ -10,7 +10,7 @@ namespace Chapter06.Plugins.Plugins
 {
     public abstract class PluginBase: IPlugin
     {
-        protected ICdsUnitOfWorkRepository CdsUnitOfWorkRepository { get; private set; }
+        protected ICdsRepositoryFactory CdsUnitOfWorkRepository { get; private set; }
 
         public abstract void RegisterCommands(CdsCommandFactory commandsFactory, List<ICdsCommand> registeredCommands); 
 

@@ -9,7 +9,6 @@ namespace Chapter06.Plugins.Repositories.Base
 {
     public interface IRepositoryBase
     {
-        IRepositoryBase Initialize(ICdsServiceProvider serviceProvider);
 
         Guid Create(Entity entity);
 

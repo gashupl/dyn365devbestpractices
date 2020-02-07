@@ -24,11 +24,11 @@ namespace Chapter06.Plugins.Commands
 
             if (lead.NumberOfEmployees > 30)
             {
-                var teamRepository = CdsUnitOfWorkRepository.GetRepository<ITeamRepository>(); 
+                var teamRepository = CdsRepositoryFactory.GetRepository<ITeamRepository>(); 
                 var team = teamRepository.GetSalesTeam();
                 if (team != null)
                 {
-                    var taskRepository = CdsUnitOfWorkRepository.GetRepository<ITaskRepository>();
+                    var taskRepository = CdsRepositoryFactory.GetRepository<ITaskRepository>();
                     taskRepository.Create(new Task()
                     {
                         Subject = "Important lead. Please do sales actions ASAP!",

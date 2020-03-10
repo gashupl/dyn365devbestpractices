@@ -25,13 +25,13 @@ namespace Chapter06.Plugins.Plugins
 
                 foreach (ICdsCommand command in registeredCommands)
                 {
-                    var actionName = command.GetType().Name.ToString();
+                    var commandName = command.GetType().Name.ToString();
 
                     if (command.CanExecute())
                     {
-                        crmSericeProvider.TracingService.Trace($"{actionName} - execution started");
+                        crmSericeProvider.TracingService.Trace($"{commandName} - execution started");
                         command.Execute();
-                        crmSericeProvider.TracingService.Trace($"{actionName} - execution completed" );
+                        crmSericeProvider.TracingService.Trace($"{commandName} - execution completed" );
                     }
                 }
             }

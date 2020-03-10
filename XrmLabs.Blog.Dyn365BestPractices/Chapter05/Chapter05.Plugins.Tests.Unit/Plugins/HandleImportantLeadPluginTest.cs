@@ -27,7 +27,7 @@ namespace Chapter05.Plugins.Tests.Unit.Plugins
         }
 
         [TestMethod]
-        public void Isvalid_ValidContext_ReturnsTrue()
+        public void IsValid_ValidContext_ReturnsTrue()
         {
             Mock<IPluginExecutionContext> pluginContextMock = new Mock<IPluginExecutionContext>();
             pluginContextMock.SetupGet(c => c.PrimaryEntityName).Returns(Lead.EntityLogicalName);
@@ -39,7 +39,7 @@ namespace Chapter05.Plugins.Tests.Unit.Plugins
         }
 
         [TestMethod]
-        public void Isvalid_InvalidEntity_ReturnsFalse()
+        public void IsValid_InvalidEntity_ReturnsFalse()
         {
             Mock<IPluginExecutionContext> pluginContextMock = new Mock<IPluginExecutionContext>();
             pluginContextMock.SetupGet(c => c.PrimaryEntityName).Returns(Account.EntityLogicalName);
@@ -51,7 +51,7 @@ namespace Chapter05.Plugins.Tests.Unit.Plugins
         }
 
         [TestMethod]
-        public void Isvalid_InvalidMessage_ReturnsFalse()
+        public void IsValid_InvalidMessage_ReturnsFalse()
         {
             Mock<IPluginExecutionContext> pluginContextMock = new Mock<IPluginExecutionContext>();
             pluginContextMock.SetupGet(c => c.PrimaryEntityName).Returns(Lead.EntityLogicalName);
